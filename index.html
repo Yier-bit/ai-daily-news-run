@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily News Run - 每日 AI 新闻播客</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🤖 AI Daily News Run</h1>
+            <p>每天一期，跟踪 AI 行业最新动态 📰</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p>这里是每日 AI 新闻播客，由 <a href="https://github.com/Yier-bit/ai-daily-news-run" target="_blank">OpenClaw</a> 自动生成。聚合多个顶级 AI 信息源，带你快速掌握 AI 行业最新进展。</p>
+        </section>
+
+        <section class="episode-list">
+            <h2>🗓️ 最新节目</h2>
+            <div id="episodes">
+                <!--  episodes will be inserted here  -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Built with 🦞 by <a href="https://openclaw.ai" target="_blank">OpenClaw</a> · Powered by GitHub Pages</p>
+        </div>
+    </footer>
+
+    <script>
+        // Episode list data - generated automatically
+        const episodes = [
+            {
+                date: "2026-03-25",
+                title: "Anthropic 反超 OpenAI / AI Agent 元年 / 基础设施独角兽",
+                audio: "audio/2026-03-25.mp3",
+                article: "articles/2026-03-25.html",
+                description: "三大核心趋势：Anthropic 企业份额反超 OpenAI，安全信任成护城河；Gartner 预测 2026 年底 80% 软件厂商嵌入生成式 AI，Agent 规模化落地元年；AI 基础设施每层都诞生独角兽，Nscale 拿 20 亿美金 C 轮。"
+            }
+        ];
+
+        // Render episodes
+        const episodesDiv = document.getElementById('episodes');
+        episodes.forEach(ep => {
+            const epDiv = document.createElement('div');
+            epDiv.className = 'episode-item';
+            epDiv.innerHTML = `
+                <div class="episode-info">
+                    <h3><a href="${ep.article}">${ep.date} - ${ep.title}</a></h3>
+                    <p>${ep.description}</p>
+                </div>
+                <div class="episode-audio">
+                    <audio controls src="${ep.audio}"></audio>
+                </div>
+            `;
+            episodesDiv.appendChild(epDiv);
+        });
+    </script>
+</body>
+</html>
