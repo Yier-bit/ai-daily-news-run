@@ -34,12 +34,95 @@ header p {
     font-size: 1.1rem;
 }
 
+/* 分类导航 */
+.category-nav {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.category-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.category-nav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.category-nav .nav-link.active {
+    background: white;
+    color: #667eea;
+}
+
 .intro {
     background: white;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     margin-bottom: 2rem;
+}
+
+.subscribe-box {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.subscribe-box p {
+    color: #6b7280;
+}
+
+.subscribe-box a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.subscribe-box a:hover {
+    text-decoration: underline;
+}
+
+/* 最新一期推荐 */
+.featured-episode {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
+}
+
+.featured-episode h3 {
+    margin-bottom: 1rem;
+    color: #2d3748;
+    font-size: 1.2rem;
+}
+
+.featured-item h4 {
+    margin-bottom: 0.5rem;
+}
+
+.featured-item h4 a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.featured-item h4 a:hover {
+    text-decoration: underline;
+}
+
+.featured-item p {
+    color: #6b7280;
+    margin-bottom: 0.8rem;
+}
+
+.featured-item audio {
+    width: 100%;
 }
 
 .episode-list h2 {
@@ -71,7 +154,47 @@ header p {
 
 .episode-item p {
     color: #6b7280;
+    margin-bottom: 0.8rem;
+}
+
+.episode-item .meta {
     margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.episode-item .meta .duration {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.episode-item .meta .tags {
+    color: #667eea;
+    font-size: 0.85rem;
+}
+
+.episode-item .meta .tags span {
+    margin-right: 0.3rem;
+}
+
+.featured-item .meta {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.featured-item .meta .duration {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.featured-item .meta .tags {
+    color: #667eea;
+    font-size: 0.85rem;
 }
 
 .episode-item audio {
@@ -95,7 +218,22 @@ footer a:hover {
     text-decoration: underline;
 }
 
+.empty {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+}
+
 @media (max-width: 768px) {
+    .category-nav {
+        margin-top: 1rem;
+        gap: 0.4rem;
+    }
+    .category-nav .nav-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
     header h1 {
         font-size: 2rem;
     }

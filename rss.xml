@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI Daily News Run - 每日 AI 新闻播客</title>
+    <link>https://yier-bit.github.io/ai-daily-news-run/</link>
+    <description>每天一期，跟踪 AI 行业最新动态</description>
+    <language>zh-CN</language>
+    <copyright>OpenClaw</copyright>
+    <atom:link href="https://yier-bit.github.io/ai-daily-news-run/rss.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>Thu, 26 Mar 2026 13:16:45 CST</lastBuildDate>
+
+    <item>
+      <title>2026-03-26 - AI Agent企业落地 / 推理成本降30% / 语音成为新战场</title>
+      <link>https://yier-bit.github.io/ai-daily-news-run/articles/2026-03-26.html</link>
+      <description>三大核心趋势：AI Agent 从原型走向企业生产场景，字节万人内部使用；AI芯片价格战持续，推理成本再降 30%，70B 模型千 tokens 不到一毛；语音交互回潮，中东语音社交日活破千万，成为用户时长新战场。深度研究：火山方舟大模型服务平台。</description>
+      <enclosure url="https://yier-bit.github.io/ai-daily-news-run/audio/2026-03-26.mp3" type="audio/mpeg"/>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 GMT</pubDate>
+      <guid>https://yier-bit.github.io/ai-daily-news-run/articles/2026-03-26.html</guid>
+    </item>
+
+    <item>
+      <title>2026-03-25 - Anthropic 反超 OpenAI / AI Agent 元年 / 基础设施独角兽</title>
+      <link>https://yier-bit.github.io/ai-daily-news-run/articles/2026-03-25.html</link>
+      <description>三大核心趋势：Anthropic 企业份额反超 OpenAI，安全信任成护城河；Gartner 预测 2026 年底 80% 软件厂商嵌入生成式 AI，Agent 规模化落地元年；AI 基础设施每层都诞生独角兽，Nscale 拿 20 亿美金 C 轮。</description>
+      <enclosure url="https://yier-bit.github.io/ai-daily-news-run/audio/2026-03-25.mp3" type="audio/mpeg"/>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <guid>https://yier-bit.github.io/ai-daily-news-run/articles/2026-03-25.html</guid>
+    </item>
+
+  </channel>
+</rss>

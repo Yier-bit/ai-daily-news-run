@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Daily News Run - 每日 AI 新闻播客</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="rss.xml">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,18 +12,34 @@
         <div class="container">
             <h1>🤖 AI Daily News Run</h1>
             <p>每天一期，跟踪 AI 行业最新动态 📰</p>
+            <!-- 分类导航 -->
+            <nav class="category-nav">
+                <a href="javascript:filterEpisodes('all')" class="nav-link active">全部</a>
+                <a href="javascript:filterEpisodes('趋势洞察')" class="nav-link">趋势洞察</a>
+                <a href="javascript:filterEpisodes('产品研究')" class="nav-link">产品研究</a>
+                <a href="javascript:filterEpisodes('公司深度')" class="nav-link">公司深度</a>
+                <a href="javascript:filterEpisodes('创投动态')" class="nav-link">创投动态</a>
+            </nav>
         </div>
     </header>
 
     <main class="container">
         <section class="intro">
             <p>这里是每日 AI 新闻播客，由 <a href="https://github.com/Yier-bit/ai-daily-news-run" target="_blank">OpenClaw</a> 自动生成。聚合多个顶级 AI 信息源，带你快速掌握 AI 行业最新进展。</p>
+            <div class="subscribe-box">
+                <p>📡 <strong>订阅方式</strong>：<a href="rss.xml" target="_blank">RSS 订阅</a> | 各大播客平台更新中...</p>
+            </div>
+        </section>
+
+        <!-- 最新一期推荐 -->
+        <section class="featured-episode" id="featured-episode">
+            <!-- 最新一期将在这里插入 -->
         </section>
 
         <section class="episode-list">
-            <h2>🗓️ 最新节目</h2>
+            <h2>🗓️ 全部节目</h2>
             <div id="episodes">
-                <!--  episodes will be inserted here  -->
+                <!-- episodes will be inserted here -->
             </div>
         </section>
     </main>
@@ -41,6 +58,9 @@
                 title: "AI Agent企业落地 / 推理成本降30% / 语音成为新战场",
                 audio: "audio/2026-03-26.mp3",
                 article: "articles/2026-03-26.html",
+                duration: "约9分钟",
+                categories: ["趋势洞察", "AI行业动态"],
+                tags: ["#AI Agent", "#推理成本", "#语音交互"],
                 description: "三大核心趋势：AI Agent 从原型走向企业生产场景，字节万人内部使用；AI芯片价格战持续，推理成本再降 30%，70B 模型千 tokens 不到一毛；语音交互回潮，中东语音社交日活破千万，成为用户时长新战场。深度研究：火山方舟大模型服务平台。"
             },
             {
@@ -48,26 +68,87 @@
                 title: "Anthropic 反超 OpenAI / AI Agent 元年 / 基础设施独角兽",
                 audio: "audio/2026-03-25.mp3",
                 article: "articles/2026-03-25.html",
+                duration: "约11分钟",
+                categories: ["趋势洞察", "创投动态"],
+                tags: ["#Anthropic", "#OpenAI", "#AI Agent", "#独角兽"],
                 description: "三大核心趋势：Anthropic 企业份额反超 OpenAI，安全信任成护城河；Gartner 预测 2026 年底 80% 软件厂商嵌入生成式 AI，Agent 规模化落地元年；AI 基础设施每层都诞生独角兽，Nscale 拿 20 亿美金 C 轮。"
             }
         ];
 
-        // Render episodes
-        const episodesDiv = document.getElementById('episodes');
-        episodes.forEach(ep => {
-            const epDiv = document.createElement('div');
-            epDiv.className = 'episode-item';
-            epDiv.innerHTML = `
-                <div class="episode-info">
-                    <h3><a href="${ep.article}">${ep.date} - ${ep.title}</a></h3>
-                    <p>${ep.description}</p>
-                </div>
-                <div class="episode-audio">
-                    <audio controls src="${ep.audio}"></audio>
+        let currentCategory = 'all';
+
+        // 渲染最新一期推荐
+        function renderFeatured() {
+            const featured = episodes[0]; // 最新一期放前面
+            const div = document.getElementById('featured-episode');
+            div.innerHTML = `
+                <h3>🌟 最新一期</h3>
+                <div class="featured-item">
+                    <div class="featured-info">
+                        <h4><a href="${featured.article}">${featured.date} - ${featured.title}</a></h4>
+                        <p>${featured.description}</p>
+                        <div class="meta">
+                            <span class="duration">⏱️ ${featured.duration}</span>
+                            <span class="tags">${featured.tags.join(' ')}</span>
+                        </div>
+                    </div>
+                    <div class="featured-audio">
+                        <audio controls src="${featured.audio}"></audio>
+                    </div>
                 </div>
             `;
-            episodesDiv.appendChild(epDiv);
-        });
+        }
+
+        // 渲染节目列表，支持分类筛选
+        function renderEpisodes() {
+            const episodesDiv = document.getElementById('episodes');
+            episodesDiv.innerHTML = '';
+
+            const filtered = currentCategory === 'all'
+                ? episodes.slice(1) // 最新一期已经在上面推荐了，列表从第二期开始
+                : episodes.filter(ep => ep.categories.includes(currentCategory));
+
+            filtered.forEach(ep => {
+                const epDiv = document.createElement('div');
+                epDiv.className = 'episode-item';
+                epDiv.innerHTML = `
+                    <div class="episode-info">
+                        <h3><a href="${ep.article}">${ep.date} - ${ep.title}</a></h3>
+                        <p>${ep.description}</p>
+                        <div class="meta">
+                            <span class="duration">⏱️ ${ep.duration}</span>
+                            <span class="tags">${ep.tags.join(' ')}</span>
+                        </div>
+                    </div>
+                    <div class="episode-audio">
+                        <audio controls src="${ep.audio}"></audio>
+                    </div>
+                `;
+                episodesDiv.appendChild(epDiv);
+            });
+
+            if (filtered.length === 0) {
+                episodesDiv.innerHTML = '<p class="empty">该分类下暂无节目 😶</p>';
+            }
+        }
+
+        // 分类筛选
+        function filterEpisodes(category) {
+            currentCategory = category;
+            // 更新导航高亮
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.textContent.trim() === (category === 'all' ? '全部' : category)) {
+                    link.classList.add('active');
+                }
+            });
+            renderEpisodes();
+            window.scrollTo({ top: document.querySelector('.episode-list').offsetTop - 20, behavior: 'smooth' });
+        }
+
+        // 初始渲染
+        renderFeatured();
+        renderEpisodes();
     </script>
 </body>
 </html>
